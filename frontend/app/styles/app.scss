@@ -1,0 +1,22 @@
+@import 'vendor/bootstrap-sass-official/assets/stylesheets/bootstrap';
+@import 'nav';
+
+html, body {
+  margin: 20px 0px;
+}
+
+form {
+    width: 100%;
+}
+
+.selectpicker {
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+}
+
+button {
+    height: 58px;
+}

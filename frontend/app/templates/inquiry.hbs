@@ -1,0 +1,210 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Product Info</div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-addon">SKU prefix</span>
+                            {{input type="text" value=skuPrefix class="form-control" placeholder="TECHROVER_SKU"}}
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Discount lowest price by</span>
+                            {{input type="number" value=discountPercent class="form-control" placeholder="0.0"}}
+                            <span class="input-group-addon">%</span>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Minimum price</span>
+                            {{input type="number" value=minimumPrice class="form-control" placeholder="0.0"}}
+                        </div>
+
+                        <br>
+                        <h5>Minimum price by type of battery</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        3C
+                                    </span>
+                                    {{input type="number" value=threeCell class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        4C
+                                    </span>
+                                    {{input type="number" value=fourCell class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        6C
+                                    </span>
+                                    {{input type="number" value=sixCell class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        8C
+                                    </span>
+                                    {{input type="number" value=eightCell class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        9C
+                                    </span>
+                                    {{input type="number" value=nineCell class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        12C
+                                    </span>
+                                    {{input type="number" value=twelveCell class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+
+                        <br>
+                        <h5>Minimum price for original batteries</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        3C
+                                    </span>
+                                    {{input type="number" value=threeCellOriginal class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        4C
+                                    </span>
+                                    {{input type="number" value=fourCellOriginal class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        6C
+                                    </span>
+                                    {{input type="number" value=sixCellOriginal class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        8C
+                                    </span>
+                                    {{input type="number" value=eightCellOriginal class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        9C
+                                    </span>
+                                    {{input type="number" value=nineCellOriginal class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        12C
+                                    </span>
+                                    {{input type="number" value=twelveCellOriginal class="form-control" placeholder="0.0"}}
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Search Criteria</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Category
+                                    </span>
+                                    {{view Ember.Select
+                                        content=categories
+                                        value=selectedCategory
+                                        class="form-control"
+                                    }}
+                                </div><!-- /input-group -->
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Pages to return
+                                    </span>
+                                    {{input type="number" value=pagesToReturn class="form-control" placeholder="1"}}
+                                </div><!-- /input-group -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Country
+                                    </span>
+                                    {{view Ember.Select
+                                        content=countries
+                                        value=selectedCountry
+                                        class="form-control"
+                                    }}
+                                </div><!-- /input-group -->
+                            </div>
+
+                        </div>
+                        <br>
+                        <h5>Search phrases (one per line)<h5>
+                        {{textarea class="big-text-area form-control col-md-12" value=searchPhrases rows="8" placeholder="Dell battery 1545
+Dell 1545
+Battery Dell 1500"}} {{!This is a dirty hack to get the input to span multiple lines.}}
+                        <button type="button" {{action 'searchButtonPressed'}} class="col-md-12 btn btn-primary btn-lg">
+                           Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {{view "progress-bar" percentBinding="percentOfPagesFetched"}}
+        </div>
+
+        <div class="row">
+            {{#collection Ember.ListView contentBinding="finalCleanedList" height=500 rowHeight=500 width=1000}}
+                <br>
+                {{rank}} <br>
+                {{asin}} <br>
+                {{url}} <br>
+                {{title}} <br>
+                {{imageUrl}} <br>
+                {{price}} <br>
+                {{rating}} <br>
+                {{reviewsCount}} <br>
+                {{sellersCount}} <br>
+            {{/collection}}
+        </div>
+</div>

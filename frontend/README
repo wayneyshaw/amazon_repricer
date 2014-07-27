@@ -1,0 +1,37 @@
+To set up a project in Ember using ember-cli:
+    $ sudo npm install -g ember-cli
+    $ ember new amazon_repricer
+    $ sudo npm -g install bower
+    $ sudo bower install --save --allow-root bootstrap
+    Install coffeescript and make .coffee files:
+        $ npm install --save-dev ember-cli-coffeescript
+    Add motherfucking bootstrap:
+          $ sudo bower install --save bootstrap-sass-official --allow-root
+          $ sudo npm install --save-dev broccoli-sass
+          $ mv app/styles/app.css app/styles/app.scss
+          Add this to the top of app.scss:
+            - @import 'vendor/bootstrap-sass-official/assets/stylesheets/bootstrap';
+          Replace the last line in Brocfile.js with:
+            // import the necessary modules:
+            var pickFiles = require('broccoli-static-compiler');
+            var mergeTrees = require('broccoli-merge-trees');
+
+            // at the bottom of the file, replace the "module.exports" line with:
+            // module.exports = app.toTree();
+
+            // Put the bootstrap fonts in the place that the bootstrap css expects to find them.
+            var bootstrapFonts = pickFiles('vendor/bootstrap-sass-official/assets/assets/fonts/bootstrap', {
+                srcDir: '/',
+                destDir: '/assets/bootstrap'
+            });
+
+            // Merge the bootstrapFonts with the ember app tree
+            var mergeTrees = require('broccoli-merge-trees');
+            module.exports = mergeTrees([
+                app.toTree(),
+                bootstrapFonts
+            ]);
+    Play with ./app/templates/application.hbs
+    Build the app and start the server:
+        $ ember server
+    Go to localhost:4200

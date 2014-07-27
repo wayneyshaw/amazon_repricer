@@ -1,0 +1,193 @@
+<div class="container">
+<section>
+    <div class="row">
+        <form title="Defaults" class="form-horizontal">
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label">Leadtime to Ship</label>
+                    <div class="controls">
+                        <div class="input-append">
+                            <input name="leadtime" type="number" min="0"><span class="add-on">days</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Will Ship Internationally</label>
+                    <div class="controls">
+                        <input name="willShipInternationally" type="checkbox">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Standard Plus Shipping</label>
+                    <div class="controls">
+                        <input name="standardPlusShipping" type="checkbox">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Expedited Shipping</label>
+                    <div class="controls">
+                        <input name="expeditedShipping" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="span7">
+                <div class="control-group">
+                    <label class="control-label">Condition</label>
+                    <div class="controls">
+                        <input name="condition" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Quantity</label>
+                    <div class="controls">
+                        <input name="quantity" type="number" min="0">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Item Note</label>
+                    <div class="controls">
+                        <textarea name="query" rows="8" class="input-block-level"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-row">
+                <select name="name" placeholder="Name">
+                    <option value=""> --- Select Result for Lists --- </option>
+
+                    <option value="CtSgarnC46tzHh8CB">hihi</option>
+
+                    <option value="munNuDxmfNJJ9fLFv">qt_toshiba_3817-2</option>
+
+                    <option value="SY8RqrYsf4MbRLwT3">qt_toshiba_3817-2-R</option>
+
+                    <option value="HnJtTLvdqoLw8QfQf">qt_toshiba_3817-7</option>
+
+                    <option value="ZfMqvoMvxB4RiBwiz">qt_3817-8</option>
+
+                    <option value="y5wNR5Gvy8ZP6EPHo">qt_toshiba_3817-9</option>
+
+                    <option value="iPiTtPnxdJZMab4vv">qt_toshiba_3817-10</option>
+
+                    <option value="2DPJJ85RH4jFTqGMe">qt_fujitsu_fpcbp200</option>
+
+                    <option value="es55umQNqjRwNCnP2">qt_apple_a1189</option>
+
+                    <option value="DKoJRbpKYaR2ZQn82">test1000</option>
+
+                </select>
+                <button type="submit" class="btn btn-primary">Select Results</button>
+            </div>
+            <div id="popovertop" class="popover top">
+                <div class="arrow"></div>
+                <h3 class="popover-title">Edit SKU</h3>
+                <div class="popover-content">
+                    <p><input id="skutext" name="newskuinput" type="text"></p>
+                    <p>
+                        <button type="button" id="newskusubmit" class="btn btn-primary btn-sm">Done</button>
+                        <button type="button" id="newskucancle" class="btn btn-primary btn-sm">Cancel</button>
+                    </p>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!--     <form title="Results select" class="results-select">
+
+        </form> -->
+</section>
+<table class="table table-hover listings">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Status</th>
+        <th>ASIN</th>
+        <th>SKU</th>
+        <th>Price</th>
+        <!-- th Quantity-->
+        <!-- th Condition-->
+        <!-- th Leadtime to Ship-->
+        <!-- th Will Ship Internationally-->
+        <!-- th Expedited Shipping-->
+        <!-- th Standard Plus Shipping-->
+        <!-- th Item Note-->
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr class="listing">
+        <td class="counter">
+            <button type="button" class="delete btn-mini btn-danger"> <i class="icon-trash"></i></button>
+        </td>
+        <td>Active</td>
+        <td><a href="http://amzn.com/B003E2O3TU">B003E2O3TU</a></td>
+        <td class="sku">
+            <span class="editable" data-toggle="tooltip" data-placement="top" title="Click to edit">TECHROVER_SKU_12C_OG_CX1067_93</span></td>
+        <td>$20.00</td>
+        <!-- td 99-->
+        <!-- td New-->
+        <!-- td  Days-->
+        <!-- td -->
+        <!-- td -->
+        <!-- td -->
+        <!-- td.note -->
+    </tr>
+
+    <tr class="listing">
+        <td class="counter">
+            <button type="button" class="delete btn-mini btn-danger"> <i class="icon-trash"></i></button>
+        </td>
+        <td>Active</td>
+        <td><a href="http://amzn.com/B005U2VCLE">B005U2VCLE</a></td>
+        <td class="sku">
+            <span class="editable" data-toggle="tooltip" data-placement="top" title="Click to edit">TECHROVER_SKU_12C_CX1068_90</span></td>
+        <td>$11.11</td>
+        <!-- td 99-->
+        <!-- td New-->
+        <!-- td  Days-->
+        <!-- td -->
+        <!-- td -->
+        <!-- td -->
+        <!-- td.note -->
+    </tr>
+
+    <tr class="listing">
+        <td class="counter">
+            <button type="button" class="delete btn-mini btn-danger"> <i class="icon-trash"></i></button>
+        </td>
+        <td>Active</td>
+        <td><a href="http://amzn.com/B001M0JAVC">B001M0JAVC</a></td>
+        <td class="sku">
+            <span class="editable" data-toggle="tooltip" data-placement="top" title="Click to edit">TECHROVER_SKU_9C_CX1066_92</span></td>
+        <td>$20.00</td>
+        <!-- td 99-->
+        <!-- td New-->
+        <!-- td  Days-->
+        <!-- td -->
+        <!-- td -->
+        <!-- td -->
+        <!-- td.note -->
+    </tr>
+
+    <tr class="listing">
+        <td class="counter">
+            <button type="button" class="delete btn-mini btn-danger"> <i class="icon-trash"></i></button>
+        </td>
+        <td>Active</td>
+        <td><a href="http://amzn.com/B003TPUS3W">B003TPUS3W</a></td>
+        <td class="sku">
+            <span class="editable" data-toggle="tooltip" data-placement="top" title="Click to edit">qt_dell_1440__6C_CX578_1</span></td>
+        <td>$24.50</td>
+        <!-- td 99-->
+        <!-- td New-->
+        <!-- td  Days-->
+        <!-- td -->
+        <!-- td -->
+        <!-- td -->
+        <!-- td.note -->
+    </tr>
+
+    </tbody>
+</table>
+
+</div>

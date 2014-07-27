@@ -1,0 +1,127 @@
+`import Ember from 'ember'`
+
+InquiryController = Ember.ObjectController.extend(
+    DEFAULT_SKU_PREFIX: 'TECHROVER_SKU'
+
+    skuPrefix: ''
+    discountPercent: ''
+    minimumPrice: ''
+
+    selectedCategory: 'Laptop and Netbook Computer Batteries'
+    categories: ['Laptop and Netbook Computer Batteries']
+
+    pagesToReturn: ''
+
+    selectedCountry: 'USA'
+    countries: ['USA', 'UK', 'Canada']
+
+    searchPhrases: ''
+
+    actions:
+        searchButtonPressed: (->
+            # Run a ton of queries asynchronously.
+            _getValues = (dictionary) ->
+                return Object.keys(dictionary).map(
+                    (key) ->
+                        return dictionary[key]
+                )
+
+            _executePromises = (promisesMap, callback) ->
+                Ember.RSVP.Promise.race(_getValues(promisesMap)).then(
+                    (ret) ->
+                        callback(ret)
+                        delete promisesMap[ret[0]]
+                        _executePromises(promisesMap, callback)
+                )
+
+            _setUpPromises = () ->
+                _promisesMap = {}
+                for i in [1..20]
+                    _promisesMap[i] = new Ember.RSVP.Promise(
+                        (resolve, reject) ->
+                            # Must call resolve(i) in here.
+                            setTimeout(resolve, Math.random() * 5000, i)
+                    )
+                return _promisesMap
+
+            _get = (url, promiseId) ->
+                # Return a new promise.
+                return new Promise(
+                    (resolve, reject) ->
+                        # Do the usual XHR stuff
+                        req = new XMLHttpRequest()
+                        req.open('GET', url)
+
+                        req.onload = () ->
+                            # This is called even on 404 etc so check the status
+                            if (req.status == 200)
+                                # Resolve the promise with the response text
+                                resolve([promiseId, req.response]);
+                            else
+                                # Otherwise reject with the status text which will hopefully be a meaningful error
+                                reject([promiseId, Error(req.statusText)])
+
+                        # Handle network errors
+                        req.onerror = () ->
+                            reject([promiseId, Error("Network Error")])
+
+                        # Make the request
+                        req.send()
+                )
+
+            _get_amazon_data = (parent) ->
+                # Return amazon scrape.
+                pagesToReturn = if parent.pagesToReturn is '' then 1 else parseInt(parent.pagesToReturn)
+
+                searchPhrases = parent.searchPhrases.split('\n')
+                return unless searchPhrases.length > 0
+
+                selectedCountry = parent.selectedCountry
+
+                requestPromises = {}
+                for phrase in searchPhrases
+                    if phrase is '' then continue
+                    for page in [1..pagesToReturn]
+                        if selectedCountry is 'Canada'
+                            url = "http://www.amazon.ca/s/ref=nb_sb_noss_2?url=node%3D3341338011&field-keywords=" + (phrase.split(' ').join('+')) + "&page=" + page;
+                        else if selectedCountry is 'UK'
+                            url = "http://www.amazon.co.uk/s/ref=sr_nr_n_6?rh=n%3A340831031%2Cn%3A430485031%2Ck%3Ahp&keywords=" + (phrase.split(' ').join('+')) + "&page=" + page;
+                        else
+                            url = "http://www.amazon.com/s/?rh=n:720576&field-keywords=" + (phrase.split(' ').join('+')) + "&page=" + page;
+
+                        promiseId = page + selectedCountry + phrase
+
+                        thisPromise = _get(url, promiseId).then(
+                            (succ_data) ->
+                                console.log('SUCCESS')
+                                return succ_data
+                            (err_data) ->
+                                console.log('ERROR')
+                                return err_data
+                        )
+                        requestPromises[promiseId] = thisPromise
+                _executePromises(requestPromises, (ret) -> console.log(ret))
+
+
+            # Send request in iFrame
+            # CORS vs Content Security Policy
+            # postMessage -- communicate between iFrames
+            # The tangled web: a guide to securing modern web applications
+            _get('http://www.google.com').then(
+                (response) ->
+                    #console.log('SUCCESS: ' + response)
+                (response) ->
+                    #console.log('ERROR: ' + response)
+            )
+
+            _get_amazon_data(this)
+
+            #promisesMap = _setUpPromises()
+            #_executePromises(promisesMap, (ret) -> console.log(ret))
+
+            console.log('hi')
+            console.log('Search button pressed.')
+        )
+)
+
+`export default InquiryController`

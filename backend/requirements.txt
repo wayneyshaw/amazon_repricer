@@ -1,0 +1,15 @@
+Flask==0.10.1
+Flask-HTTPAuth==2.2.1
+Jinja2==2.7.2
+MarkupSafe==0.19
+Werkzeug==0.9.4
+boto==2.27.0
+certifi==1.0.1
+chardet==2.2.1
+gunicorn==18.0
+itsdangerous==0.23
+py-bcrypt==0.4
+pymongo==2.6.3
+requests==0.10.4
+simplejson==2.2.1
+wsgiref==0.1.2
