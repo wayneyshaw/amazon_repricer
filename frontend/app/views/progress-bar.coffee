@@ -5,7 +5,7 @@ ProgressBar = Ember.View.extend
     template: (->
         '<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%; transition: none;">
                     <div class=percentInside style="color: black; margin: 0px 5px;">0%</div>
-                  </div>').observes('percent')
+                  </div>')
     percent: 0
 
     percentDidChange: (->
@@ -15,8 +15,6 @@ ProgressBar = Ember.View.extend
         if percent is 0
             debugger
             @$('div.percentInside').css 'margin', '0px', '5px'
-
-
     ).observes('percent')
 
 `export default ProgressBar`
